@@ -2,6 +2,7 @@
 using JWTAuth.WebApi.Repository;
 using JWTAuth.WebAPI.Interfaces;
 using JWTAuth.WebAPI.Models;
+using JWTAuth.WebAPI.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -15,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DatabaseContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("dbConnection")));
 builder.Services.AddTransient<IEmployees, EmployeeRepository>();
+builder.Services.AddTransient<IUsers, UserRepository>();
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
