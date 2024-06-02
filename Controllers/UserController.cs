@@ -50,7 +50,7 @@ namespace JWTAuth.WebApi.Controllers
         [HttpPut("{id}")]
         public async Task<ActionResult<UserModel>> Put(int id, UserModel user)
         {
-            if (id != user.UserId)
+            if (id != user.Id)
             {
                 return BadRequest();
             }

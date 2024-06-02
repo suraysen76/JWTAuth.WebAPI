@@ -31,7 +31,7 @@ namespace JWTAuth.WebApi.Repository
             try
             {
                 var set = _dbContext.Employees;
-                EmployeeModel? employee = _dbContext.Employees.Where(ee=>ee.EmployeeId==id).FirstOrDefault();
+                EmployeeModel? employee = _dbContext.Employees.Where(ee=>ee.Id==id).FirstOrDefault();
                 if (employee != null)
                 {
                     return employee;
@@ -77,7 +77,7 @@ namespace JWTAuth.WebApi.Repository
         {
             try
             {
-                EmployeeModel? employee = _dbContext.Employees.Where(ee=>ee.EmployeeId==id).FirstOrDefault();
+                EmployeeModel? employee = _dbContext.Employees.Where(ee=>ee.Id==id).FirstOrDefault();
 
                 if (employee != null)
                 {
@@ -98,7 +98,7 @@ namespace JWTAuth.WebApi.Repository
 
         public bool CheckEmployee(int id)
         {
-            return _dbContext.Employees.Any(e => e.EmployeeId == id);
+            return _dbContext.Employees.Any(e => e.Id == id);
         }
     }
 }

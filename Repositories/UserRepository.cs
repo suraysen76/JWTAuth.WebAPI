@@ -29,7 +29,7 @@ namespace JWTAuth.WebAPI.Repositories
         {
             try
             {
-                UserModel? user = _dbContext.Users.Where(u => u.UserId == id).FirstOrDefault();
+                UserModel? user = _dbContext.Users.Where(u => u.Id == id).FirstOrDefault();
                 if (user != null)
                 {
                     return user;
@@ -75,7 +75,7 @@ namespace JWTAuth.WebAPI.Repositories
         {
             try
             {
-                UserModel? user = _dbContext.Users.Where(ee => ee.UserId == id).FirstOrDefault();
+                UserModel? user = _dbContext.Users.Where(ee => ee.Id == id).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -96,7 +96,7 @@ namespace JWTAuth.WebAPI.Repositories
 
         public bool CheckUser(int id)
         {
-            return _dbContext.Users.Any(e => e.UserId == id);
+            return _dbContext.Users.Any(e => e.Id == id);
         }
 
         
