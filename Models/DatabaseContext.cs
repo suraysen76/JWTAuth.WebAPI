@@ -22,8 +22,9 @@ namespace JWTAuth.WebAPI.Models
         {
             modelBuilder.Entity<UserModel>(entity =>
             {
-                entity.HasNoKey();
+                
                 entity.ToTable("Users");
+                entity.Property(e => e.Id).HasColumnName("Id");
                 entity.Property(e => e.UserId).HasColumnName("UserId");
                 entity.Property(e => e.DisplayName).HasMaxLength(60).IsUnicode(false);
                 entity.Property(e => e.UserName).HasMaxLength(30).IsUnicode(false);
@@ -34,8 +35,9 @@ namespace JWTAuth.WebAPI.Models
 
             modelBuilder.Entity<EmployeeModel>(entity =>
             {
-                entity.HasNoKey();
+               
                 entity.ToTable("Employees");
+                entity.Property(e => e.Id).HasColumnName("Id");
                 entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
                 entity.Property(e => e.NationalIDNumber).HasMaxLength(15).IsUnicode(false);
                 entity.Property(e => e.EmployeeName).HasMaxLength(100).IsUnicode(false);
@@ -50,6 +52,7 @@ namespace JWTAuth.WebAPI.Models
                 entity.Property(e => e.RowGuid).HasMaxLength(50).IsUnicode(false);
                 entity.Property(e => e.ModifiedDate).IsUnicode(false);
             });
+
             OnModelCreatingPartial(modelBuilder);
         }
 

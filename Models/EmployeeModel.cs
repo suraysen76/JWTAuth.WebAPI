@@ -2,6 +2,7 @@
 {
     public class EmployeeModel
     {
+        public int Id { get; set; }
         public int EmployeeId { get; set; }
         public string? NationalIDNumber { get; set; }
         public string? EmployeeName { get; set; }
