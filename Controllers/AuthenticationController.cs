@@ -38,8 +38,8 @@ namespace JWTAuth.WebApi.Controllers
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim(ClaimTypes.Sid, user.UserId.ToString()),
-                        new Claim("DisplayName", user.DisplayName),
-                        new Claim("UserName", user.UserName),
+                        new Claim(ClaimTypes.GivenName, user.DisplayName),
+                        new Claim(ClaimTypes.NameIdentifier, user.UserName),
                         new Claim(ClaimTypes.Email, user.Email),
                         new Claim(ClaimTypes.Role, user.Role)
 

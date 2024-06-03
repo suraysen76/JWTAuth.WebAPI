@@ -10,7 +10,7 @@ namespace JWTAuth.WebApi.Controllers
 {
     [Route("api/user")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : Controller
     {
         private readonly IUsers _IUsers;
 
@@ -23,8 +23,11 @@ namespace JWTAuth.WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> Get()
         {
-            return await Task.FromResult(_IUsers.GetUserDetails());
+            var response= await Task.FromResult(_IUsers.GetUserDetails());
+            return View(response);
         }
+        
+
 
         // GET api/user/5
         [HttpGet("{id}")]
