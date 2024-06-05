@@ -24,7 +24,7 @@ namespace JWTAuth.WebApi.Controllers
         public async Task<ActionResult<IEnumerable<UserModel>>> Get()
         {
             var response= await Task.FromResult(_IUsers.GetUserDetails());
-            return View(response);
+            return response;
         }
         
 
