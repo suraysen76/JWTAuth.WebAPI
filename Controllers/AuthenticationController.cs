@@ -54,7 +54,17 @@ namespace JWTAuth.WebApi.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: signIn);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                    var tokenStr = new JwtSecurityTokenHandler().WriteToken(token);
+                    var claimsModel = new ClaimsModel();
+                    claimsModel.Token = tokenStr;
+                    claimsModel.Claims = new List<ClaimModel>();
+
+                    foreach (var cl in token.Claims)
+                    {
+                        var claimModel = new ClaimModel() { Type = cl.Type, Value = cl.Value };                        
+                        claimsModel.Claims.Add(claimModel);
+                    }
+                    return Ok(claimsModel);
                 }
                 else
                 {
